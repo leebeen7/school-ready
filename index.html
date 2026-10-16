@@ -98,6 +98,10 @@ section .sub { color: var(--muted); font-size: 15px; margin-bottom: 14px; }
 .note { margin-top: 10px; font-size: 14px; color: var(--muted); }
 
 /* 12회 알림장 */
+.checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.checks li { margin: 0; display: grid; grid-template-columns: 26px 1fr; gap: 8px; align-items: start; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 11px 13px; font-size: 15.5px; }
+.checks li::before { content: "✓"; display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 7px; background: var(--yellow); font-weight: 700; font-size: 14px; }
+.checks-end { margin-top: 12px; font-size: 16px; font-weight: 700; }
 .diary { list-style: none; padding: 0; margin: 0; counter-reset: n; }
 .diary li { display: grid; grid-template-columns: 44px 1fr; gap: 10px; padding-block: 10px; border-bottom: 1px solid var(--line); margin: 0; }
 .diary li:last-child { border-bottom: 0; }
@@ -160,7 +164,7 @@ footer b { color: var(--ink); }
 <div class="facts">
 <div class="fact"><b>12회</b><span>주 1회</span></div>
 <div class="fact"><b>40분</b><span>1교시와 같은 길이</span></div>
-<div class="fact"><b>소그룹</b><span>한 반 4명 안팎</span></div>
+<div class="fact"><b>6명</b><span>한 반 최대 인원</span></div>
 </div>
 </div>
 
@@ -173,6 +177,20 @@ footer b { color: var(--ink); }
 <p>학교준비반은 이 책의 순서를 그대로 따라가요. 입학 첫 몇 주를 「처음 해 보는 것」이 아니라 「한 번 해 본 것」으로 맞이할 수 있도록요.</p>
 </div>
 </div>
+</section>
+
+<section>
+<h2>어떤 걸 배우나요</h2>
+<ul class="checks">
+<li>수업 시간과 쉬는 시간 구분하기</li>
+<li>수업 시간에 지켜야 할 규칙 배우기</li>
+<li>교과서, 노트, 필통을 서랍에 정리하기</li>
+<li>선생님이 말하는 쪽수 찾아 펴기</li>
+<li>실내화 갈아 신고 정리하기</li>
+<li>급식 우유팩 열기, 쇠젓가락으로 반찬 집기</li>
+<li>화장실 다녀오겠다고 말하고 혼자 사용하기</li>
+</ul>
+<p class="checks-end">이렇게 학교 적응에 필요한 세부적인 기능을 하나씩 연습해요.</p>
 </section>
 
 <section>
@@ -251,7 +269,7 @@ footer b { color: var(--ink); }
 </details>
 <details>
 <summary>요일, 시간, 비용은요?</summary>
-<p>신청해 주신 분께 센터에서 개별로 연락드려 안내해 드려요.</p>
+<p>신청해 주신 분께 센터에서 개별로 연락드려 안내해 드려요. 한 반은 최대 6명이고, 신청 인원에 따라 개강 일정이 조정될 수 있어요.</p>
 </details>
 <details>
 <summary>지금 받고 있는 치료는 어떻게 되나요?</summary>
@@ -267,14 +285,14 @@ footer b { color: var(--ink); }
 
 <nav class="bar" aria-label="신청">
 <div class="in">
-<div class="info"><b>학교준비반 신청</b>2020 · 2021년생 · 12회</div>
+<div class="info"><b>학교준비반 신청</b>2020 · 2021년생 · 한 반 최대 6명</div>
 <a class="apply" id="apply" href="#" rel="noopener">신청하기</a>
 </div>
 </nav>
 
 <script>
 // 네이버 폼 주소가 정해지면 여기만 바꾼다
-var FORM_URL = "";
+var FORM_URL = "https://naver.me/G3veOBrC";
 var a = document.getElementById("apply");
 if (FORM_URL) { a.href = FORM_URL; a.target = "_blank"; }
 else { a.textContent = "준비 중"; a.classList.add("off"); a.setAttribute("aria-disabled", "true"); }
