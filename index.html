@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>학교준비반 · 아이조은행복쑥쑥 아동발달클리닉</title>
+<meta name="description" content="초등 1학년 「학교」 교과서를 미리 따라가며, 학교에서 실제로 막히는 손동작과 말 한마디를 하나씩 연습하는 12회 소그룹 수업입니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+/* 레이아웃 : 알림장 한 권처럼 위에서 아래로 한 줄. 노란 1학년 모자색을 강조로 한 군데씩만 쓴다 */
+:root {
+  --paper: #fffdf6;
+  --ink: #1f2a44;
+  --muted: #5d6478;
+  --line: #e7e2d3;
+  --yellow: #f5c03b;
+  --yellow-soft: #fff3cc;
+  --sky: #e8f0fb;
+  --sky-ink: #2c5aa0;
+  --display: "Jua", "Pretendard", system-ui, sans-serif;
+  --body: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.65;
+  word-break: keep-all;
+  padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px));
+}
+.wrap {
+  max-width: 560px;
+  margin: 0 auto;
+  padding-left: max(18px, env(safe-area-inset-left, 0px));
+  padding-right: max(18px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+ul { margin: 0; padding-left: 1.1em; }
+li + li { margin-top: 4px; }
+
+/* 맨 위 */
+.top { padding-block: 28px 8px; }
+.clinic { font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
+.hero { padding-block: 10px 26px; }
+.hero .eyebrow {
+  display: inline-block; font-size: 13px; font-weight: 700;
+  background: var(--yellow); color: var(--ink);
+  padding: 3px 10px; border-radius: 999px; margin-bottom: 14px;
+}
+.hero h1 { font-size: 40px; line-height: 1.15; }
+.hero .lead { margin-top: 14px; font-size: 17px; color: var(--ink); }
+.facts {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 20px;
+}
+.fact { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 10px 8px; text-align: center; }
+.fact b { display: block; font-family: var(--display); font-size: 22px; line-height: 1.2; }
+.fact span { font-size: 12.5px; color: var(--muted); }
+
+section { padding-block: 26px; border-top: 1px dashed var(--line); }
+section h2 { font-size: 25px; margin-bottom: 12px; }
+section .sub { color: var(--muted); font-size: 15px; margin-bottom: 14px; }
+
+/* 교과서 카드 */
+.book {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--sky); border-radius: 14px; padding: 16px;
+}
+.book .cover {
+  flex: 0 0 64px; height: 84px; border-radius: 6px 10px 10px 6px;
+  background: var(--sky-ink); color: #fff; display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-size: 22px; box-shadow: inset 6px 0 0 rgba(0,0,0,.18);
+}
+.book p { font-size: 15px; min-width: 0; }
+.book p + p { margin-top: 8px; }
+
+/* 짚어 주는 것 */
+.points { display: grid; gap: 10px; }
+.point { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 13px 14px; }
+.point h3 { font-size: 18px; margin-bottom: 3px; }
+.point p { font-size: 15px; color: var(--muted); }
+
+/* 1교시 시간표 */
+.period { background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.period .row { display: grid; grid-template-columns: 58px 1fr; border-top: 1px solid var(--line); }
+.period .row:first-child { border-top: 0; }
+.period .min { background: var(--yellow-soft); font-family: var(--display); font-size: 19px; display: flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; }
+.period .what { padding: 11px 13px; font-size: 15px; min-width: 0; }
+.period .what b { display: block; font-size: 16px; }
+.note { margin-top: 10px; font-size: 14px; color: var(--muted); }
+
+/* 12회 알림장 */
+.diary { list-style: none; padding: 0; margin: 0; counter-reset: n; }
+.diary li { display: grid; grid-template-columns: 44px 1fr; gap: 10px; padding-block: 10px; border-bottom: 1px solid var(--line); margin: 0; }
+.diary li:last-child { border-bottom: 0; }
+.diary .no { font-family: var(--display); font-size: 17px; color: var(--sky-ink); font-variant-numeric: tabular-nums; }
+.diary .t { font-weight: 700; font-size: 16px; }
+.diary .d { font-size: 14.5px; color: var(--muted); margin-top: 2px; }
+
+.box { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 15px 16px; }
+.box + .box { margin-top: 10px; }
+.box h3 { font-size: 18px; margin-bottom: 6px; }
+.box li { font-size: 15px; }
+
+.faq details { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 0 14px; }
+.faq details + details { margin-top: 8px; }
+.faq summary { cursor: pointer; padding-block: 13px; font-weight: 700; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; float: right; color: var(--muted); font-weight: 400; }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { padding-bottom: 14px; font-size: 15px; color: var(--muted); }
+
+footer { padding-block: 24px 10px; border-top: 1px dashed var(--line); font-size: 13.5px; color: var(--muted); }
+footer b { color: var(--ink); }
+
+/* 고정 하단바 */
+.bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+  background: rgba(255, 253, 246, 0.96);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.bar .in { max-width: 560px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
+.bar .info { flex: 1; min-width: 0; font-size: 13px; color: var(--muted); line-height: 1.35; }
+.bar .info b { display: block; color: var(--ink); font-size: 15px; }
+.apply {
+  flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center;
+  min-width: 132px; height: 52px; padding: 0 22px; border-radius: 14px;
+  background: var(--ink); color: #fff; text-decoration: none;
+  font-family: var(--display); font-size: 20px;
+}
+.apply:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.apply.off { background: #9aa0ad; pointer-events: none; }
+@media (max-width: 360px) { .hero h1 { font-size: 34px; } .apply { min-width: 112px; padding: 0 16px; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header class="top">
+<div class="clinic">아이조은행복쑥쑥 소아청소년과의원 부설 아이조은행복쑥쑥 아동발달클리닉</div>
+</header>
+
+<div class="hero">
+<span class="eyebrow">2020 · 2021년생 친구들</span>
+<h1>학교준비반</h1>
+<p class="lead">초등학교 1학년 「학교」 교과서를 미리 한 번 따라가 보며, 아이가 학교에서 실제로 막히는 손동작과 말 한마디를 하나씩 연습하는 소그룹 수업이에요.</p>
+<div class="facts">
+<div class="fact"><b>12회</b><span>주 1회</span></div>
+<div class="fact"><b>40분</b><span>1교시와 같은 길이</span></div>
+<div class="fact"><b>소그룹</b><span>한 반 4명 안팎</span></div>
+</div>
+</div>
+
+<section>
+<h2>무엇을 바탕으로 하나요</h2>
+<div class="book">
+<div class="cover">학교</div>
+<div>
+<p>1학년이 입학하면 3월부터 약 5주 동안 통합교과 「학교」 책으로 학교 생활을 배워요. 교실과 내 자리, 줄 서기, 화장실, 점심시간, 친구 사귀기 같은 내용이에요.</p>
+<p>학교준비반은 이 책의 순서를 그대로 따라가요. 입학 첫 몇 주를 「처음 해 보는 것」이 아니라 「한 번 해 본 것」으로 맞이할 수 있도록요.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>책을 따라가며 이런 것을 짚어 줘요</h2>
+<p class="sub">교과서에는 다 나오지 않지만, 입학하면 아이 혼자 해내야 하는 것들이에요.</p>
+<div class="points">
+<div class="point"><h3>책 펴서 눌러 두기</h3><p>책을 펴면 가운데를 손바닥으로 쭉쭉 눌러 다시 덮이지 않게 해요. 「○쪽 펴세요」를 듣고 쪽수를 찾아요.</p></div>
+<div class="point"><h3>우유팩 혼자 열기</h3><p>급식 우유팩의 어느 쪽을 어떻게 젖혀야 열리는지, 빨대 우유는 어떻게 꽂는지 직접 해 봐요.</p></div>
+<div class="point"><h3>쇠젓가락으로 반찬 집기</h3><p>급식실에서 많이 쓰는 쇠젓가락은 집에서 쓰던 것보다 미끄럽고 가늘어요. 콩자반과 김을 집어 보며 익혀요.</p></div>
+<div class="point"><h3>「화장실 다녀와도 될까요?」</h3><p>수업 중에 참지 않고 말로 요청하기, 칸 문을 잠그고 여는 법, 물 내리기까지 연습해요.</p></div>
+<div class="point"><h3>가방 지퍼와 필통</h3><p>가방을 혼자 끝까지 열고 닫고, 필요한 것만 꺼내고, 가정통신문을 파일에 끼워 넣어요.</p></div>
+<div class="point"><h3>손 들고 기다리기</h3><p>팔을 쭉 펴고 이름이 불릴 때까지 기다렸다가 말해요. 모를 때는 「다시 말씀해 주세요」라고 말해요.</p></div>
+</div>
+</section>
+
+<section>
+<h2>매 수업은 학교 1교시처럼</h2>
+<p class="sub">학교 하루는 매일 같은 순서로 돌아가요. 그 순서를 몸에 익히는 것이 수업의 절반이에요.</p>
+<div class="period">
+<div class="row"><div class="min">5분</div><div class="what"><b>들어오기</b>신발 정리, 인사, 가방 걸기, 책과 필통 꺼내 놓기</div></div>
+<div class="row"><div class="min">20분</div><div class="what"><b>책 활동</b>그날 「학교」 책 내용과 짚어 줄 것</div></div>
+<div class="row"><div class="min">10분</div><div class="what"><b>놀이</b>책에 나오는 놀이나 노래 하나. 규칙을 듣고, 져도 끝까지 해요</div></div>
+<div class="row"><div class="min">5분</div><div class="what"><b>마치기</b>알림장에 「집에서 할 것」 따라 쓰기, 정리, 줄 서서 인사</div></div>
+</div>
+<p class="note">수업이 끝나면 선생님이 보호자분께 그날 한 것과 집에서 해 볼 것을 짧게 말씀드려요.</p>
+</section>
+
+<section>
+<h2>12회 동안 배우는 것</h2>
+<ol class="diary">
+<li><span class="no">1회</span><div><div class="t">두근두근 학교가 궁금해요</div><div class="d">학교의 하루 순서, 40분이 얼마나 긴지 느껴 보기</div></div></li>
+<li><span class="no">2회</span><div><div class="t">우리 교실, 내 자리</div><div class="d">바르게 앉기, 서랍과 필통 정리, 의자 밀어 넣기</div></div></li>
+<li><span class="no">3회</span><div><div class="t">가방 정리는 이렇게</div><div class="d">지퍼 열고 닫기, 파일에 통신문 넣기, 내 물건 찾기</div></div></li>
+<li><span class="no">4회</span><div><div class="t">줄을 서요</div><div class="d">순서대로 줄 서기, 복도와 계단에서 걷기</div></div></li>
+<li><span class="no">5회</span><div><div class="t">화장실을 바르게 사용해요</div><div class="d">말로 요청하기, 문 잠그기, 뒤처리, 손 씻기</div></div></li>
+<li><span class="no">6회</span><div><div class="t">즐거운 점심시간 ① 받고 먹기</div><div class="d">식판 들기, 배식받을 때 쓰는 말, 쇠젓가락</div></div></li>
+<li><span class="no">7회</span><div><div class="t">즐거운 점심시간 ② 열고 치우기</div><div class="d">우유팩·빨대 우유·간식 봉지 열기, 식판 반납</div></div></li>
+<li><span class="no">8회</span><div><div class="t">색칠하고 오리고 붙이고</div><div class="d">가위와 풀 안전하게 쓰기, 선 긋기, 내 이름 쓰기</div></div></li>
+<li><span class="no">9회</span><div><div class="t">수업 시간 약속</div><div class="d">손 들고 발표하기, 친구 말 끝까지 듣기, 두 가지 지시 따르기</div></div></li>
+<li><span class="no">10회</span><div><div class="t">쉬는 시간 안전하게 놀기</div><div class="d">다음 시간 준비 먼저, 종이 치면 들어오기, 놀이 규칙 지키기</div></div></li>
+<li><span class="no">11회</span><div><div class="t">친구가 좋아</div><div class="d">말 걸기, 부드럽게 거절하기, 빌리고 돌려주기</div></div></li>
+<li><span class="no">12회</span><div><div class="t">진짜 1학년이 되었어요</div><div class="d">학교 안 장소 알기, 1교시 처음부터 끝까지 리허설, 수료증</div></div></li>
+</ol>
+<p class="note">6회와 7회에는 연습할 반찬과 우유를 집에서 챙겨 와 주세요. 앞 수업에서 알림장으로 안내드려요.</p>
+</section>
+
+<section>
+<h2>보호자분과 함께 해요</h2>
+<div class="box">
+<h3>매회 집에서 할 것 한 가지</h3>
+<ul>
+<li>다음 날 준비물을 아이가 직접 가방에 넣기</li>
+<li>저녁 한 끼를 쇠젓가락으로 먹어 보기</li>
+<li>우유를 컵 대신 팩째로 열어 마셔 보기</li>
+<li>다닐 학교 앞까지 걸어가 정문과 후문 확인하기</li>
+</ul>
+</div>
+<div class="box">
+<h3>처음과 마지막에 같은 관찰표로 봐요</h3>
+<ul>
+<li>1회와 12회에 책 다루기, 가방 정리, 화장실 요청, 쇠젓가락과 우유팩, 가위질, 손 들고 말하기, 자리에 앉아 있는 시간을 같은 기준으로 살펴봐요.</li>
+<li>센터에서 쓰는 관찰표예요. 표준화된 검사는 아니에요.</li>
+</ul>
+</div>
+</section>
+
+<section class="faq">
+<h2>자주 물어보세요</h2>
+<details>
+<summary>한글이나 수도 배우나요?</summary>
+<p>학교준비반은 한글과 수를 가르치는 반이 아니라 학교 생활을 미리 해 보는 반이에요. 「학교」 교과서에 나오는 생활 내용을 따라가요.</p>
+</details>
+<details>
+<summary>누가 들을 수 있나요?</summary>
+<p>2020년생과 2021년생 친구들이에요. 신청해 주시면 담당 선생님과 상의해 아이에게 맞는 반으로 안내드려요.</p>
+</details>
+<details>
+<summary>요일, 시간, 비용은요?</summary>
+<p>신청해 주신 분께 센터에서 개별로 연락드려 안내해 드려요.</p>
+</details>
+<details>
+<summary>지금 받고 있는 치료는 어떻게 되나요?</summary>
+<p>학교준비반은 지금 받고 있는 수업과 따로 진행되는 그룹 수업이에요. 궁금하신 점은 데스크나 담당 선생님께 편하게 물어봐 주세요.</p>
+</details>
+</section>
+
+<footer>
+<b>아이조은행복쑥쑥 아동발달클리닉</b><br>
+문의 031-811-8900
+</footer>
+</div>
+
+<nav class="bar" aria-label="신청">
+<div class="in">
+<div class="info"><b>학교준비반 신청</b>2020 · 2021년생 · 12회</div>
+<a class="apply" id="apply" href="#" rel="noopener">신청하기</a>
+</div>
+</nav>
+
+<script>
+// 네이버 폼 주소가 정해지면 여기만 바꾼다
+var FORM_URL = "";
+var a = document.getElementById("apply");
+if (FORM_URL) { a.href = FORM_URL; a.target = "_blank"; }
+else { a.textContent = "준비 중"; a.classList.add("off"); a.setAttribute("aria-disabled", "true"); }
+</script>
+</body>
+</html>
