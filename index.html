@@ -94,6 +94,10 @@ section { padding-block: 30px 6px; }
 .sec-head h2 { font-size: 25px; line-height: 1.25; }
 .sub { color: var(--muted); font-size: 15px; margin: -4px 0 14px; }
 .note { margin-top: 12px; font-size: 14px; color: var(--muted); }
+.vid { margin-top: 20px; }
+.vbox { border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); background: #000; aspect-ratio: 16 / 9; }
+.vbox video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.vcap { margin-top: 8px; font-size: 13px; color: var(--muted); text-align: center; }
 .card { background: var(--card); border-radius: 18px; box-shadow: var(--shadow); padding: 16px; }
 .card + .card { margin-top: 10px; }
 
@@ -224,7 +228,6 @@ footer a { color: var(--ink); }
 <div class="clinic">아이조은행복쑥쑥 소아청소년과의원 부설 아이조은행복쑥쑥 아동발달클리닉</div>
 <div class="hero-grid">
 <div>
-<span class="tag">2027년 3월 입학하는 2020년생</span>
 <h1><small>예비 1학년 쑥쑥반</small>학교준비반</h1>
 </div>
 <svg viewBox="0 0 120 130" role="img" aria-label="노란 모자와 책가방">
@@ -266,7 +269,11 @@ footer a { color: var(--ink); }
 
 <main class="wrap">
 
-<!-- 나중에 넣을 자리 1 · 수업 교실 소개 짧은 영상 (리빈님이 따로 만들어 넣으신다) -->
+<!-- 수업 교실 소개 영상 · 리빈님 제작 (2026-10-24) -->
+<section id="video" class="vid">
+<div class="vbox"><video src="classroom.mp4" poster="classroom.jpg" autoplay muted loop playsinline controls preload="metadata" aria-label="학교준비반 교실 소개 영상"></video></div>
+<p class="vcap">학교준비반 수업을 이해하기 쉽게 그린 연출 영상이에요. 소리는 화면을 눌러 켤 수 있어요.</p>
+</section>
 
 <section id="base">
 <div class="sec-head"><div class="ic" style="background:var(--sky-2)"><svg viewBox="0 0 24 24" fill="none" stroke="#3b6fd1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5"/><path d="M9 8h6"/></svg></div><h2>무엇을 바탕으로 하나요</h2></div>
@@ -391,8 +398,8 @@ footer a { color: var(--ink); }
 <div><h3>다음 날 오후 1시 전에, 우리 아이 기록을 보내 드려요</h3>
 <ul>
 <li>수업 다음 날 오후 1시 전에 그날의 목표 기록과 선생님 한마디를 아이마다 개별 메시지로 보내 드려요.</li>
-<li>집에서 해 볼 것 하나도 함께 보내 드려요. 모두에게 같은 숙제가 아니라, 그날 우리 아이가 아직 어려워한 목표에 맞춰 골라요.</li>
-<li>예를 들어 급식 수업에서 식판 옮기기가 어려웠다면, 쟁반에 컵 하나를 올려 식탁까지 옮겨 보는 심부름처럼 집에서 바로 해 볼 수 있는 것으로 안내해요.</li>
+<li>그날 기록을 보고, 집에서 이어서 해 볼 것 하나도 함께 알려 드려요.</li>
+<li>예를 들어 목소리 크기를 배운 날에는 엘리베이터에서 「지금은 몇 번 목소리일까?」 하고 물어보는 것처럼, 생활 속에서 바로 해 볼 수 있는 것으로 안내해요.</li>
 </ul></div>
 </div>
 <div class="card care">
@@ -400,8 +407,9 @@ footer a { color: var(--ink); }
 <div><h3>매 회기 같은 기준으로 살펴봐요</h3>
 <ul>
 <li>회기마다 그날의 목표를 아이별로 「혼자 함 · 도움 받아 함 · 아직 어려움」으로 기록해요.</li>
-<li>6회, 12회, 18회에는 그동안의 기록을 모은 생활기록을 PDF로 보내 드려요.</li>
-<li>센터에서 쓰는 관찰 기록이에요. 표준화된 검사는 아니에요.</li>
+<li>6회, 12회, 18회에는 담당 선생님이 그동안의 기록을 아이별로 정리한 생활기록을 PDF로 보내 드려요.</li>
+<li>생활기록은 아이가 수업에서 어떻게 지냈는지 보호자분과 나누려고 담당 선생님이 따로 만드는 참고 자료예요. 표준화된 검사 결과가 아니에요.</li>
+<li>병원에서 발급하는 진단서나 소견서가 아니어서 보험사 등 다른 곳에 내는 서류로는 쓸 수 없어요. 가정에서 참고용으로만 봐 주세요.</li>
 </ul></div>
 </div>
 </section>
